@@ -1,0 +1,8 @@
+from math import factorial
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        pas = []
+        for i in range(numRows):
+            pas.append(list(factorial(i)//(factorial(j)*factorial(i-j)) for j in range(i+1)))
+        return pas
