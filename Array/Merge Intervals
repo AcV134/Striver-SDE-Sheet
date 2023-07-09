@@ -1,0 +1,13 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort()
+        cur_s, cur_e = intervals[0][0], intervals[0][1]
+        new_interval = []
+        for i in intervals[1:]:
+            if i[0]<=cur_e:
+                cur_s, cur_e = min(cur_s,i[0]), max(cur_e,i[1])
+            else:
+                new_interval.append([cur_s,cur_e])
+                cur_s,cur_e = i[0],i[1]
+        new_interval.append([cur_s,cur_e])
+        return new_interval
